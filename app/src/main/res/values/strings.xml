@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PostalCode</string>
+    <string name="zipped_database_name">x-ken-all-201702.db.zip</string>
+    <string name="database_name">x-ken-all-201702.db</string>
 </resources>
