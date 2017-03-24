@@ -5,3 +5,5 @@
 /build
 *.apk
 *.iml
+/x-ken-all.csv
+/x-ken-all.db
