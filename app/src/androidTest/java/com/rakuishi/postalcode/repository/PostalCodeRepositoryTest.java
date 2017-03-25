@@ -42,8 +42,6 @@ public class PostalCodeRepositoryTest {
         repository.findAll()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((postalCodes, throwable) -> {
-                    assertNotNull(postalCodes);
-
                     PostalCode postalCode = postalCodes.get(0);
                     assertEquals(postalCode.prefecture, "北海道");
                     assertEquals(postalCode.city, "札幌市中央区");
@@ -55,8 +53,6 @@ public class PostalCodeRepositoryTest {
         repository.findByPrefectureId(40)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((postalCodes, throwable) -> {
-                    assertNotNull(postalCodes);
-
                     PostalCode postalCode = postalCodes.get(0);
                     assertEquals(postalCode.prefectureId, 40);
                     assertEquals(postalCode.prefecture, "福岡県");
@@ -68,11 +64,18 @@ public class PostalCodeRepositoryTest {
         repository.findByCityId(1)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((postalCodes, throwable) -> {
-                    assertNotNull(postalCodes);
-
                     PostalCode postalCode = postalCodes.get(0);
                     assertEquals(postalCode.cityId, 1);
                     assertEquals(postalCode.city, "札幌市中央区");
+                });
+    }
+
+    @Test
+    public void findPrefectures() throws Exception {
+        repository.findPrefectures()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((postalCodes, throwable) -> {
+                    assertEquals(postalCodes.size(), 47);
                 });
     }
 }
