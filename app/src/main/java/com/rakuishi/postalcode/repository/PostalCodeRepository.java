@@ -23,4 +23,14 @@ public class PostalCodeRepository implements PostalCodeDataSource {
     public Single<List<PostalCode>> findAll() {
         return dataSource.findAll();
     }
+
+    @Override
+    public Single<List<PostalCode>> findByPrefectureId(int prefectureId) {
+        return dataSource.findByPrefectureId(prefectureId);
+    }
+
+    @Override
+    public Single<List<PostalCode>> findByCityId(int cityId) {
+        return dataSource.findByCityId(cityId);
+    }
 }

@@ -49,4 +49,30 @@ public class PostalCodeRepositoryTest {
                     assertEquals(postalCode.city, "札幌市中央区");
                 });
     }
+
+    @Test
+    public void findByPrefectureId() throws Exception {
+        repository.findByPrefectureId(40)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((postalCodes, throwable) -> {
+                    assertNotNull(postalCodes);
+
+                    PostalCode postalCode = postalCodes.get(0);
+                    assertEquals(postalCode.prefectureId, 40);
+                    assertEquals(postalCode.prefecture, "福岡県");
+                });
+    }
+
+    @Test
+    public void findByCityId() throws Exception {
+        repository.findByCityId(1)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((postalCodes, throwable) -> {
+                    assertNotNull(postalCodes);
+
+                    PostalCode postalCode = postalCodes.get(0);
+                    assertEquals(postalCode.cityId, 1);
+                    assertEquals(postalCode.city, "札幌市中央区");
+                });
+    }
 }
