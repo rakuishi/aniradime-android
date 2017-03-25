@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.disposables.CompositeDisposable;
 
 @Module
 public class AppModule {
@@ -23,6 +24,11 @@ public class AppModule {
     @Provides
     public Context provideContext() {
         return context;
+    }
+
+    @Provides
+    public CompositeDisposable provideCompositeDisposable() {
+        return new CompositeDisposable();
     }
 
     @Singleton

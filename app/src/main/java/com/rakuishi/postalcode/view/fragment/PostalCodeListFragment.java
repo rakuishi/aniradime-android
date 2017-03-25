@@ -18,6 +18,8 @@ import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import timber.log.Timber;
 
 public class PostalCodeListFragment extends BaseFragment implements PostalCodeListAdapter.Callback {
@@ -26,6 +28,8 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     private PostalCodeListAdapter adapter;
     @Inject
     PostalCodeRepository postalCodeRepository;
+    @Inject
+    CompositeDisposable compositeDisposable;
 
     @Override
     public void onAttach(Context context) {
@@ -47,7 +51,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        postalCodeRepository.findPrefectures()
+        Disposable disposable = postalCodeRepository.findPrefectures()
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe((postalCodes, throwable) -> {
                     if (throwable == null) {
@@ -55,6 +59,13 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
                     }
                     binding.progressBar.setVisibility(View.GONE);
                 });
+        compositeDisposable.add(disposable);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        compositeDisposable.dispose();
     }
 
     // region PostalCodeListAdapter.Callback
