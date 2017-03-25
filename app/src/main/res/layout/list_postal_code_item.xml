@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="@dimen/dp_20"
+    android:paddingRight="@dimen/dp_16"
+    android:paddingBottom="@dimen/dp_20"
+    android:paddingLeft="@dimen/dp_16"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    >
+
+    <TextView
+        style="@style/PrimaryText"
+        android:id="@+id/primary_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="北九州市門司区"
+        />
+
+    <TextView
+        style="@style/SecondaryText"
+        android:id="@+id/secondary_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/primary_text_view"
+        tools:text="きたきゅうしゅうしもじく"
+        />
+
+</RelativeLayout>
