@@ -1,5 +1,6 @@
 package com.rakuishi.postalcode.view.fragment;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,16 +12,25 @@ import android.view.ViewGroup;
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.FragmentPostalCodeListBinding;
 import com.rakuishi.postalcode.model.PostalCode;
+import com.rakuishi.postalcode.repository.PostalCodeRepository;
 import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
+
+import javax.inject.Inject;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import timber.log.Timber;
 
 public class PostalCodeListFragment extends BaseFragment implements PostalCodeListAdapter.Callback {
 
     private FragmentPostalCodeListBinding binding;
     private PostalCodeListAdapter adapter;
+    @Inject
+    PostalCodeRepository postalCodeRepository;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        appComponent().inject(this);
     }
 
     @Nullable
@@ -36,6 +46,15 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        postalCodeRepository.findPrefectures()
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe((postalCodes, throwable) -> {
+                    if (throwable == null) {
+                        adapter.addAll(postalCodes);
+                    }
+                    binding.progressBar.setVisibility(View.GONE);
+                });
     }
 
     // region PostalCodeListAdapter.Callback

@@ -1,7 +1,8 @@
 package com.rakuishi.postalcode.di;
 
+import android.support.v4.app.FragmentManager;
+
 import com.rakuishi.postalcode.App;
-import com.rakuishi.postalcode.view.activity.MainActivity;
 
 import javax.inject.Singleton;
 
@@ -12,5 +13,6 @@ import dagger.Component;
 public interface AppComponent {
 
     void inject(App application);
-    void inject(MainActivity activity);
+    ActivityComponent activityComponent(ActivityModule activityModule);
+    FragmentComponent fragmentComponent(FragmentModule fragmentModule);
 }
