@@ -55,7 +55,7 @@ public class PostalCodeLocalDataSource implements PostalCodeDataSource {
 
     @Override
     public Single<List<PostalCode>> findByCityId(int cityId) {
-        return postalCodes().selector().prefectureIdEq(cityId).executeAsObservable().toList();
+        return postalCodes().selector().cityIdEq(cityId).executeAsObservable().toList();
     }
 
 }
