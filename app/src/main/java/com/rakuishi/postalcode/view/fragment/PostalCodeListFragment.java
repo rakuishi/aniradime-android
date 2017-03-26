@@ -158,7 +158,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
         }
 
         if (fragment != null && getActivity() != null && getActivity() instanceof MainActivity) {
-            ((MainActivity) getActivity()).replaceFragment(fragment, title);
+            // ((MainActivity) getActivity()).replaceFragment(fragment, title);
         }
     }
 

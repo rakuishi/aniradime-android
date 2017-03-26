@@ -5,6 +5,7 @@
 
     <string name="search">Search</string>
     <string name="bookmark">Bookmark</string>
+    <string name="prefecture">Prefecture</string>
     <string name="info">Info</string>
     <string name="postal_code">Postal Code</string>
     <string name="address">Address</string>
