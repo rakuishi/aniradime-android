@@ -16,6 +16,7 @@ import com.rakuishi.postalcode.model.PostalCode;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
 import com.rakuishi.postalcode.view.activity.MainActivity;
 import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
+import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
 
 import java.util.List;
 
@@ -79,6 +80,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_postal_code_list, container, false);
         adapter = new PostalCodeListAdapter(getContext(), getAdapterType(type), this);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerView.addItemDecoration(new DividerItemDecoration(getResources()));
         binding.recyclerView.setAdapter(adapter);
         return binding.getRoot();
     }
