@@ -52,7 +52,10 @@ public class PostalCodeLocalDataSource implements PostalCodeDataSource {
     public Single<List<PostalCode>> findByPrefectureId(int prefectureId) {
         List<PostalCode> cities = new ArrayList<>();
 
-        Cursor cursor = orma.getConnection().rawQuery("SELECT DISTINCT city_id, city, city_yomi FROM postalcode;");
+        Cursor cursor = orma.getConnection().rawQuery(
+                "SELECT DISTINCT city_id, city, city_yomi FROM postalcode WHERE prefecture_id = ?;",
+                String.valueOf(prefectureId)
+        );
         while (cursor.moveToNext()) {
             PostalCode postalCode = new PostalCode();
             postalCode.cityId = cursor.getInt(cursor.getColumnIndex("city_id"));
