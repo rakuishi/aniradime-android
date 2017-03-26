@@ -33,7 +33,7 @@ import static com.rakuishi.postalcode.view.fragment.PostalCodeListFragment.Type.
 public class PostalCodeListFragment extends BaseFragment implements PostalCodeListAdapter.Callback {
 
     public enum Type {
-        PREFECTURE, CITY, STREET;
+        PREFECTURE, CITY, STREET
     }
 
     private final static String TYPE = "type";
@@ -77,7 +77,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_postal_code_list, container, false);
-        adapter = new PostalCodeListAdapter(getContext(), this);
+        adapter = new PostalCodeListAdapter(getContext(), getAdapterType(type), this);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.setAdapter(adapter);
         return binding.getRoot();
@@ -116,6 +116,18 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     public void onDestroy() {
         super.onDestroy();
         compositeDisposable.dispose();
+    }
+
+    public PostalCodeListAdapter.Type getAdapterType(Type type) {
+        switch (type) {
+            case PREFECTURE:
+                return PostalCodeListAdapter.Type.PREFECTURE;
+            case CITY:
+                return PostalCodeListAdapter.Type.CITY;
+            case STREET:
+            default:
+                return PostalCodeListAdapter.Type.STREET;
+        }
     }
 
     // region PostalCodeListAdapter.Callback

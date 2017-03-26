@@ -19,13 +19,19 @@ public class PostalCodeListAdapter extends RecyclerView.Adapter<PostalCodeListAd
         void onItemClick(PostalCode postalCode);
     }
 
+    public enum Type {
+        PREFECTURE, CITY, STREET
+    }
+
     private List<PostalCode> postalCodes;
     private LayoutInflater inflater;
+    private Type type;
     private Callback callback;
 
-    public PostalCodeListAdapter(Context context, Callback callback) {
+    public PostalCodeListAdapter(Context context, Type type, Callback callback) {
         postalCodes = new ArrayList<>();
         inflater = LayoutInflater.from(context);
+        this.type = type;
         this.callback = callback;
     }
 
@@ -37,7 +43,24 @@ public class PostalCodeListAdapter extends RecyclerView.Adapter<PostalCodeListAd
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         PostalCode postalCode = postalCodes.get(position);
-        holder.primaryTextView.setText(postalCode.prefecture);
+
+        switch (type) {
+            case PREFECTURE:
+                holder.primaryTextView.setText(postalCode.prefecture);
+                holder.secondaryTextView.setVisibility(View.GONE);
+                break;
+            case CITY:
+                holder.primaryTextView.setText(postalCode.city);
+                holder.secondaryTextView.setText(postalCode.cityYomi);
+                holder.secondaryTextView.setVisibility(View.VISIBLE);
+                break;
+            case STREET:
+                holder.primaryTextView.setText(postalCode.street);
+                holder.secondaryTextView.setText(postalCode.streetYomi);
+                holder.secondaryTextView.setVisibility(View.VISIBLE);
+                break;
+        }
+
         holder.itemView.setOnClickListener(v -> callback.onItemClick(postalCode));
     }
 
