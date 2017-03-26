@@ -2,4 +2,8 @@
     <string name="app_name">PostalCode</string>
     <string name="zipped_database_name">x-ken-all-201702.db.zip</string>
     <string name="database_name">x-ken-all-201702.db</string>
+
+    <string name="postal_code">Postal Code</string>
+    <string name="address">Address</string>
+    <string name="pronunciation">Pronunciation</string>
 </resources>

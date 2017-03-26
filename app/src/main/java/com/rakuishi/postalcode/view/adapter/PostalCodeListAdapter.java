@@ -37,7 +37,7 @@ public class PostalCodeListAdapter extends RecyclerView.Adapter<PostalCodeListAd
 
     @Override
     public PostalCodeListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(inflater.inflate(R.layout.list_postal_code_item, parent, false));
+        return new ViewHolder(inflater.inflate(R.layout.list_two_line_item, parent, false));
     }
 
     @Override

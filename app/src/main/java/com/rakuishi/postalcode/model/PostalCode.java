@@ -1,5 +1,7 @@
 package com.rakuishi.postalcode.model;
 
+import android.text.TextUtils;
+
 import com.github.gfx.android.orma.annotation.Column;
 import com.github.gfx.android.orma.annotation.Table;
 
@@ -32,4 +34,20 @@ public class PostalCode {
 
     @Column("street_yomi")
     public String streetYomi;
+
+    public String getHyphenedCode() {
+        if (!TextUtils.isEmpty(code) && code.length() == 7) {
+            return code.substring(0, 3) + "-" + code.substring(3);
+        }
+
+        return "";
+    }
+
+    public String getFullName() {
+        return prefecture + city + street;
+    }
+
+    public String getFullYomi() {
+        return prefectureYomi + cityYomi + streetYomi;
+    }
 }

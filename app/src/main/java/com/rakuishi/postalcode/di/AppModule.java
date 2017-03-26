@@ -3,6 +3,7 @@ package com.rakuishi.postalcode.di;
 import android.app.Application;
 import android.content.Context;
 
+import com.google.gson.Gson;
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.model.OrmaDatabase;
 
@@ -36,5 +37,11 @@ public class AppModule {
     public OrmaDatabase provideOrmaDatabase(Context context) {
         String name = context.getString(R.string.database_name);
         return OrmaDatabase.builder(context).name(name).build();
+    }
+
+    @Singleton
+    @Provides
+    public Gson provideGson() {
+        return new Gson();
     }
 }
