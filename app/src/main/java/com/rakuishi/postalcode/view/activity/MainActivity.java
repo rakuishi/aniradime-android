@@ -5,6 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.view.fragment.PostalCodeListFragment;
@@ -16,6 +19,7 @@ public class MainActivity extends BaseActivity {
 
     // FIXME: I want to use `FragmentManager.getBackStackEntryCount()` for control of fragments.
     private List<String> fragmentNames = new ArrayList<>();
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,14 @@ public class MainActivity extends BaseActivity {
             PostalCodeListFragment fragment = PostalCodeListFragment.newInstance(PostalCodeListFragment.Type.PREFECTURE);
             replaceFragment(fragment, getString(R.string.app_name));
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        // searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        // searchView.setIconified(false);
+        return true;
     }
 
     @Override

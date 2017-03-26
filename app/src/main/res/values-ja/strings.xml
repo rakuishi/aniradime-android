@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">郵便番号</string>
 
+    <string name="search">検索</string>
+    <string name="bookmark">お気に入り</string>
+    <string name="info">情報</string>
     <string name="postal_code">郵便番号</string>
     <string name="address">住所</string>
     <string name="pronunciation">読み</string>
