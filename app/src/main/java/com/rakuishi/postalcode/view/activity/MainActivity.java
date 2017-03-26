@@ -9,10 +9,13 @@ import android.support.v4.app.FragmentTransaction;
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.view.fragment.PostalCodeListFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends BaseActivity {
 
     // FIXME: I want to use `FragmentManager.getBackStackEntryCount()` for control of fragments.
-    private int count = 0;
+    private List<String> fragmentNames = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,17 +25,17 @@ public class MainActivity extends BaseActivity {
 
         if (savedInstanceState == null) {
             PostalCodeListFragment fragment = PostalCodeListFragment.newInstance(PostalCodeListFragment.Type.PREFECTURE);
-            replaceFragment(fragment);
+            replaceFragment(fragment, getString(R.string.app_name));
         }
     }
 
     @Override
     public void onBackPressed() {
         FragmentManager manager = getSupportFragmentManager();
-        if (count > 1) {
+        if (fragmentNames.size() > 1) {
             manager.popBackStack();
-            count--;
-            updateShowHomeButton();
+            fragmentNames.remove(fragmentNames.size() - 1);
+            updateActionBar();
             return;
         }
 
@@ -45,23 +48,24 @@ public class MainActivity extends BaseActivity {
         return true;
     }
 
-    public void replaceFragment(@NonNull Fragment fragment) {
+    public void replaceFragment(@NonNull Fragment fragment, @NonNull String title) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
-        count++;
 
-        updateShowHomeButton();
+        fragmentNames.add(title);
+        updateActionBar();
     }
 
-    public void updateShowHomeButton() {
-        if (getSupportActionBar() != null) {
-            boolean enabled = count > 1;
+    public void updateActionBar() {
+        if (getSupportActionBar() != null && fragmentNames.size() > 0) {
+            boolean enabled = fragmentNames.size() > 1;
             getSupportActionBar().setDisplayHomeAsUpEnabled(enabled);
             getSupportActionBar().setDisplayShowHomeEnabled(enabled);
+            getSupportActionBar().setTitle(fragmentNames.get(fragmentNames.size() - 1));
         }
     }
 }

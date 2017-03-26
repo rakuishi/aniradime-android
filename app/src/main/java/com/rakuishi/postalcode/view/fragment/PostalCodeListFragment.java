@@ -136,13 +136,16 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
 
     @Override
     public void onItemClick(PostalCode postalCode) {
+        String title = "";
         Fragment fragment = null;
         switch (type) {
             case PREFECTURE:
+                title = postalCode.prefecture;
                 fragment = newInstance(CITY, postalCode.prefectureId);
                 break;
             case CITY:
                 // TODO: Support blank city pattern
+                title = postalCode.city;
                 fragment = newInstance(STREET, postalCode.cityId);
                 break;
             case STREET:
@@ -151,7 +154,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
         }
 
         if (fragment != null && getActivity() != null && getActivity() instanceof MainActivity) {
-            ((MainActivity) getActivity()).replaceFragment(fragment);
+            ((MainActivity) getActivity()).replaceFragment(fragment, title);
         }
     }
 
