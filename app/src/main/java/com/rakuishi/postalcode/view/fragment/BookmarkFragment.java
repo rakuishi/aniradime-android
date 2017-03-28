@@ -8,11 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rakuishi.postalcode.R;
-import com.rakuishi.postalcode.databinding.FragmentBookmarkBinding;
+import com.rakuishi.postalcode.databinding.FragmentToolbarRecyclerViewBinding;
 
 public class BookmarkFragment extends BaseFragment {
 
-    private FragmentBookmarkBinding binding;
+    private FragmentToolbarRecyclerViewBinding binding;
 
     public static BookmarkFragment newInstance() {
         return new BookmarkFragment();
@@ -25,7 +25,10 @@ public class BookmarkFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_bookmark, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_toolbar_recycler_view, container, false);
+
+        binding.view.toolbar.setTitle(R.string.bookmark);
+
         return binding.getRoot();
     }
 }

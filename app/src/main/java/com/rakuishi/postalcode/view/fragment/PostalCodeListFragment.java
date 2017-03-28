@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 import com.rakuishi.postalcode.R;
-import com.rakuishi.postalcode.databinding.FragmentPostalCodeListBinding;
+import com.rakuishi.postalcode.databinding.FragmentRecyclerViewBinding;
 import com.rakuishi.postalcode.model.PostalCode;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
 import com.rakuishi.postalcode.view.activity.MainActivity;
@@ -40,7 +40,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
 
     private final static String TYPE = "type";
     private final static String ID = "id";
-    private FragmentPostalCodeListBinding binding;
+    private FragmentRecyclerViewBinding binding;
     private PostalCodeListAdapter adapter;
     private Type type;
     private int id;
@@ -80,7 +80,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_postal_code_list, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recycler_view, container, false);
         adapter = new PostalCodeListAdapter(getContext(), getAdapterType(type), this);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(getResources()));
