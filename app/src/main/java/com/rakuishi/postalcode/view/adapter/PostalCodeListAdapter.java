@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.rakuishi.postalcode.PostalCodeViewType;
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.model.PostalCode;
 
@@ -19,16 +20,12 @@ public class PostalCodeListAdapter extends RecyclerView.Adapter<PostalCodeListAd
         void onItemClick(PostalCode postalCode);
     }
 
-    public enum Type {
-        PREFECTURE, CITY, STREET
-    }
-
     private List<PostalCode> postalCodes;
     private LayoutInflater inflater;
-    private Type type;
+    private PostalCodeViewType type;
     private Callback callback;
 
-    public PostalCodeListAdapter(Context context, Type type, Callback callback) {
+    public PostalCodeListAdapter(Context context, PostalCodeViewType type, Callback callback) {
         postalCodes = new ArrayList<>();
         inflater = LayoutInflater.from(context);
         this.type = type;

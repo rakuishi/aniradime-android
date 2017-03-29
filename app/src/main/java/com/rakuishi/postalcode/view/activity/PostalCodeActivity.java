@@ -9,21 +9,20 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.widget.Toolbar;
 
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.ActivityPostalCodeBinding;
 import com.rakuishi.postalcode.view.fragment.PostalCodeDetailFragment;
 import com.rakuishi.postalcode.view.fragment.PostalCodeListFragment;
+import com.rakuishi.postalcode.PostalCodeViewType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostalCodeActivity extends BaseActivity {
+import static com.rakuishi.postalcode.PostalCodeViewType.CITY;
+import static com.rakuishi.postalcode.PostalCodeViewType.STREET;
 
-    public enum Type {
-        CITY, STREET, DETAIL
-    }
+public class PostalCodeActivity extends BaseActivity {
 
     private final static String TYPE = "type";
     private final static String ID = "id";
@@ -31,7 +30,7 @@ public class PostalCodeActivity extends BaseActivity {
     private ActivityPostalCodeBinding binding;
     private List<String> fragmentNames = new ArrayList<>();
 
-    public static Intent newInstance(Context context, Type type, int id, String title) {
+    public static Intent newInstance(Context context, PostalCodeViewType type, int id, String title) {
         Intent intent = new Intent(context, PostalCodeActivity.class);
         intent.putExtra(TYPE, type);
         intent.putExtra(ID, id);
@@ -51,18 +50,18 @@ public class PostalCodeActivity extends BaseActivity {
             throw new IllegalStateException("PostalCodeActivity requires type and id parameters.");
         }
 
-        Type type = (Type) intent.getSerializableExtra(TYPE);
+        PostalCodeViewType type = (PostalCodeViewType) intent.getSerializableExtra(TYPE);
         int id = intent.getIntExtra(ID, 0);
         String title = intent.hasExtra(TITLE) ? intent.getStringExtra(TITLE) : "";
         Fragment fragment = null;
 
         switch (type) {
             case CITY:
-                fragment = PostalCodeListFragment.newInstance(PostalCodeListFragment.Type.CITY, id);
+                fragment = PostalCodeListFragment.newInstance(CITY, id);
                 replaceFragment(fragment, title);
                 break;
             case STREET:
-                fragment = PostalCodeListFragment.newInstance(PostalCodeListFragment.Type.STREET, id);
+                fragment = PostalCodeListFragment.newInstance(STREET, id);
                 replaceFragment(fragment, title);
                 break;
             case DETAIL:

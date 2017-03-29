@@ -22,6 +22,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
+import static com.rakuishi.postalcode.PostalCodeViewType.CITY;
+import static com.rakuishi.postalcode.PostalCodeViewType.PREFECTURE;
+
 public class PrefectureFragment extends BaseFragment implements PostalCodeListAdapter.Callback {
 
     private FragmentToolbarRecyclerViewBinding binding;
@@ -45,7 +48,7 @@ public class PrefectureFragment extends BaseFragment implements PostalCodeListAd
         appComponent().inject(this);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_toolbar_recycler_view, container, false);
 
-        adapter = new PostalCodeListAdapter(getContext(), PostalCodeListAdapter.Type.PREFECTURE, this);
+        adapter = new PostalCodeListAdapter(getContext(), PREFECTURE, this);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(getResources()));
         binding.recyclerView.setAdapter(adapter);
@@ -79,7 +82,7 @@ public class PrefectureFragment extends BaseFragment implements PostalCodeListAd
 
     @Override
     public void onItemClick(PostalCode postalCode) {
-        startActivity(PostalCodeActivity.newInstance(getContext(), PostalCodeActivity.Type.CITY, postalCode.prefectureId, postalCode.prefecture));
+        startActivity(PostalCodeActivity.newInstance(getContext(), CITY, postalCode.prefectureId, postalCode.prefecture));
     }
 
     // endregion

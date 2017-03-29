@@ -11,11 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
+import com.rakuishi.postalcode.PostalCodeViewType;
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.FragmentRecyclerViewBinding;
 import com.rakuishi.postalcode.model.PostalCode;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
-import com.rakuishi.postalcode.view.activity.MainActivity;
 import com.rakuishi.postalcode.view.activity.PostalCodeActivity;
 import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
 import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
@@ -30,20 +30,16 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import timber.log.Timber;
 
-import static com.rakuishi.postalcode.view.fragment.PostalCodeListFragment.Type.CITY;
-import static com.rakuishi.postalcode.view.fragment.PostalCodeListFragment.Type.STREET;
+import static com.rakuishi.postalcode.PostalCodeViewType.CITY;
+import static com.rakuishi.postalcode.PostalCodeViewType.STREET;
 
 public class PostalCodeListFragment extends BaseFragment implements PostalCodeListAdapter.Callback {
-
-    public enum Type {
-        PREFECTURE, CITY, STREET
-    }
 
     private final static String TYPE = "type";
     private final static String ID = "id";
     private FragmentRecyclerViewBinding binding;
     private PostalCodeListAdapter adapter;
-    private Type type;
+    private PostalCodeViewType type;
     private int id;
     @Inject
     PostalCodeRepository postalCodeRepository;
@@ -52,7 +48,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     @Inject
     Gson gson;
 
-    public static PostalCodeListFragment newInstance(Type type, int id) {
+    public static PostalCodeListFragment newInstance(PostalCodeViewType type, int id) {
         PostalCodeListFragment fragment = new PostalCodeListFragment();
         Bundle args = new Bundle();
         args.putSerializable(TYPE, type);
@@ -61,7 +57,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
         return fragment;
     }
 
-    public static PostalCodeListFragment newInstance(Type type) {
+    public static PostalCodeListFragment newInstance(PostalCodeViewType type) {
         return newInstance(type, 0);
     }
 
@@ -73,7 +69,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     public void onAttach(Context context) {
         super.onAttach(context);
         appComponent().inject(this);
-        type = (Type) getArguments().getSerializable(TYPE);
+        type = (PostalCodeViewType) getArguments().getSerializable(TYPE);
         id = getArguments().getInt(ID);
         Timber.d("type: " + type + ", id: " + id);
     }
@@ -82,7 +78,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recycler_view, container, false);
-        adapter = new PostalCodeListAdapter(getContext(), getAdapterType(type), this);
+        adapter = new PostalCodeListAdapter(getContext(), type, this);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(getResources()));
         binding.recyclerView.setAdapter(adapter);
@@ -122,18 +118,6 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     public void onDestroy() {
         super.onDestroy();
         compositeDisposable.dispose();
-    }
-
-    public PostalCodeListAdapter.Type getAdapterType(Type type) {
-        switch (type) {
-            case PREFECTURE:
-                return PostalCodeListAdapter.Type.PREFECTURE;
-            case CITY:
-                return PostalCodeListAdapter.Type.CITY;
-            case STREET:
-            default:
-                return PostalCodeListAdapter.Type.STREET;
-        }
     }
 
     // region PostalCodeListAdapter.Callback
