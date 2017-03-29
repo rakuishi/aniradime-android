@@ -16,6 +16,7 @@ import com.rakuishi.postalcode.databinding.FragmentRecyclerViewBinding;
 import com.rakuishi.postalcode.model.PostalCode;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
 import com.rakuishi.postalcode.view.activity.MainActivity;
+import com.rakuishi.postalcode.view.activity.PostalCodeActivity;
 import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
 import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
 
@@ -147,7 +148,6 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
                 fragment = newInstance(CITY, postalCode.prefectureId);
                 break;
             case CITY:
-                // TODO: Support blank city pattern
                 title = postalCode.city;
                 fragment = newInstance(STREET, postalCode.cityId);
                 break;
@@ -157,8 +157,8 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
                 break;
         }
 
-        if (fragment != null && getActivity() != null && getActivity() instanceof MainActivity) {
-            // ((MainActivity) getActivity()).replaceFragment(fragment, title);
+        if (fragment != null && getActivity() != null && getActivity() instanceof PostalCodeActivity) {
+            ((PostalCodeActivity) getActivity()).replaceFragment(fragment, title);
         }
     }
 

@@ -12,6 +12,7 @@ import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.FragmentToolbarRecyclerViewBinding;
 import com.rakuishi.postalcode.model.PostalCode;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
+import com.rakuishi.postalcode.view.activity.PostalCodeActivity;
 import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
 import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
 
@@ -78,7 +79,7 @@ public class PrefectureFragment extends BaseFragment implements PostalCodeListAd
 
     @Override
     public void onItemClick(PostalCode postalCode) {
-
+        startActivity(PostalCodeActivity.newInstance(getContext(), PostalCodeActivity.Type.CITY, postalCode.prefectureId, postalCode.prefecture));
     }
 
     // endregion
