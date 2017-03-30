@@ -55,6 +55,11 @@ public class PostalCodeListAdapter extends RecyclerView.Adapter<PostalCodeListAd
                 holder.primaryTextView.setText(postalCode.street);
                 holder.secondaryTextView.setText(postalCode.streetYomi);
                 holder.secondaryTextView.setVisibility(View.VISIBLE);
+            case SEARCH:
+            case BOOKMARK:
+                holder.primaryTextView.setText(postalCode.getFullName());
+                holder.secondaryTextView.setText(postalCode.getHyphenedCode());
+                holder.secondaryTextView.setVisibility(View.VISIBLE);
                 break;
         }
 

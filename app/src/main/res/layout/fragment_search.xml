@@ -11,9 +11,12 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingTop="@dimen/dp_64"
+            android:clipToPadding="false"
             />
 
         <com.arlib.floatingsearchview.FloatingSearchView
+            android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:floatingSearch_searchBarMarginLeft="@dimen/dp_4"
