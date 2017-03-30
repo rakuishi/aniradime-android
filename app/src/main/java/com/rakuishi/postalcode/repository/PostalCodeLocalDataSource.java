@@ -73,4 +73,70 @@ public class PostalCodeLocalDataSource implements PostalCodeDataSource {
         return postalCodes().selector().cityIdEq(cityId).streetNotEq("").executeAsObservable().toList();
     }
 
+    @Override
+    public Single<List<PostalCode>> find(String query) {
+        List<PostalCode> postalCodes = new ArrayList<>();
+
+        // 福岡県福岡市 → 福岡県 福岡市
+        String[] queries = query
+                .replace("都", "都 ")
+                .replace("道", "道 ")
+                .replace("府", "府 ")
+                .replace("県", "県 ")
+                .replace("市", "市 ")
+                .replace("町", "町 ")
+                .replace("村", "村 ")
+                .replace("区", "区 ")
+                .replace("郡", "郡 ")
+                .split(" ", -1);
+
+        Cursor cursor = orma.getConnection().rawQuery(
+                "SELECT * FROM postalcode WHERE code LIKE '%' || ? || '%'"
+                + " OR prefecture LIKE '%' || ? || '%' "
+                + " OR prefecture_yomi LIKE '%' || ? || '%' "
+                + " OR city LIKE '%' || ? || '%' "
+                + " OR city_yomi LIKE '%' || ? || '%' "
+                + " OR street LIKE '%' || ? || '%' "
+                + " OR street_yomi LIKE '%' || ? || '%' ;",
+                queries[0],
+                queries[0],
+                queries[0],
+                queries[0],
+                queries[0],
+                queries[0],
+                queries[0]
+        );
+
+        while (cursor.moveToNext()) {
+            PostalCode postalCode = new PostalCode();
+            postalCode.code = cursor.getString(cursor.getColumnIndex("code"));
+            postalCode.prefectureId = cursor.getInt(cursor.getColumnIndex("prefecture_id"));
+            postalCode.prefecture = cursor.getString(cursor.getColumnIndex("prefecture"));
+            postalCode.prefectureYomi = cursor.getString(cursor.getColumnIndex("prefecture_yomi"));
+            postalCode.cityId = cursor.getInt(cursor.getColumnIndex("city_id"));
+            postalCode.city = cursor.getString(cursor.getColumnIndex("city"));
+            postalCode.cityYomi = cursor.getString(cursor.getColumnIndex("city_yomi"));
+            postalCode.street = cursor.getString(cursor.getColumnIndex("street"));
+            postalCode.streetYomi = cursor.getString(cursor.getColumnIndex("street_yomi"));
+            postalCodes.add(postalCode);
+        }
+        cursor.close();
+
+        for (int i = 1; i < queries.length; i++) {
+            List<PostalCode> temp = new ArrayList<>();
+            for (PostalCode postalCode: postalCodes) {
+                if (postalCode.contains(queries[i])) {
+                    temp.add(postalCode);
+                }
+            }
+
+            if (temp.size() == 0) {
+                break;
+            } else {
+                postalCodes = temp;
+            }
+        }
+
+        return Single.just(postalCodes);
+    }
 }

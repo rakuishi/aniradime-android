@@ -38,4 +38,9 @@ public class PostalCodeRepository implements PostalCodeDataSource {
     public Single<List<PostalCode>> findByCityId(int cityId) {
         return dataSource.findByCityId(cityId);
     }
+
+    @Override
+    public Single<List<PostalCode>> find(String query) {
+        return dataSource.find(query);
+    }
 }

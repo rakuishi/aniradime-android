@@ -12,4 +12,5 @@ public interface PostalCodeDataSource {
     Single<List<PostalCode>> findPrefectures();
     Single<List<PostalCode>> findByPrefectureId(int prefectureId);
     Single<List<PostalCode>> findByCityId(int cityId);
+    Single<List<PostalCode>> find(String query);
 }

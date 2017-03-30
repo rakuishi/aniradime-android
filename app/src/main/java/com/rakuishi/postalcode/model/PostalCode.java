@@ -50,4 +50,10 @@ public class PostalCode {
     public String getFullYomi() {
         return prefectureYomi + cityYomi + streetYomi;
     }
+
+    public boolean contains(String query) {
+        return prefecture.contains(query) || prefectureYomi.contains(query)
+                || city.contains(query)   || cityYomi.contains(query)
+                || street.contains(query) || streetYomi.contains(query);
+    }
 }
