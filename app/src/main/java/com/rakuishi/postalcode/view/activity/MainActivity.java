@@ -79,7 +79,7 @@ public class MainActivity extends BaseActivity {
 
         final FragmentManager manager = getSupportFragmentManager();
         final FragmentTransaction transaction = manager.beginTransaction();
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        transaction.setTransition(FragmentTransaction.TRANSIT_NONE);
 
         final Fragment currentFragment = manager.findFragmentById(R.id.container);
         if (currentFragment != null) {
