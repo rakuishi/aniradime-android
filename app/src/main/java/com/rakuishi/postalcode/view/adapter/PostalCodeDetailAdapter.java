@@ -1,6 +1,7 @@
 package com.rakuishi.postalcode.view.adapter;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +14,15 @@ import com.rakuishi.postalcode.model.PostalCode;
 public class PostalCodeDetailAdapter extends RecyclerView.Adapter<PostalCodeDetailAdapter.ViewHolder> {
 
     private LayoutInflater inflater;
-    private PostalCode postalCode;
+    private @Nullable PostalCode postalCode;
 
-    public PostalCodeDetailAdapter(Context context, PostalCode postalCode) {
-        this.postalCode = postalCode;
+    public PostalCodeDetailAdapter(Context context) {
         inflater = LayoutInflater.from(context);
+    }
+
+    public void add(PostalCode postalCode) {
+        this.postalCode = postalCode;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -46,7 +51,7 @@ public class PostalCodeDetailAdapter extends RecyclerView.Adapter<PostalCodeDeta
 
     @Override
     public int getItemCount() {
-        return 3;
+        return postalCode == null ? 0 : 3;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

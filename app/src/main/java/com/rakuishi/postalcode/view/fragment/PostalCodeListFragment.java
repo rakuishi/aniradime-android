@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.gson.Gson;
 import com.rakuishi.postalcode.PostalCodeViewType;
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.FragmentRecyclerViewBinding;
@@ -45,8 +44,6 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     PostalCodeRepository postalCodeRepository;
     @Inject
     CompositeDisposable compositeDisposable;
-    @Inject
-    Gson gson;
 
     public static PostalCodeListFragment newInstance(PostalCodeViewType type, int id) {
         PostalCodeListFragment fragment = new PostalCodeListFragment();
@@ -137,7 +134,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
                 break;
             case STREET:
                 title = postalCode.getFullName();
-                fragment = PostalCodeDetailFragment.newInstance(gson.toJson(postalCode));
+                fragment = PostalCodeDetailFragment.newInstance(postalCode.code);
                 break;
         }
 
