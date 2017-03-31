@@ -1,6 +1,6 @@
 package com.rakuishi.postalcode.repository;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -16,7 +16,7 @@ public class BookmarkRepository implements BookmarkDataSource {
     }
 
     @Override
-    public List<String> findAll() {
+    public ArrayList<String> findAll() {
         return dataSource.findAll();
     }
 

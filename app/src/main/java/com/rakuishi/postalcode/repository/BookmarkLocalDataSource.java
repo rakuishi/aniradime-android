@@ -47,7 +47,7 @@ public class BookmarkLocalDataSource implements BookmarkDataSource {
     }
 
     @Override
-    public @NonNull List<String> findAll() {
+    public @NonNull ArrayList<String> findAll() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String json = prefs.getString(BOOKMARK_CODES, "");
 
@@ -55,7 +55,7 @@ public class BookmarkLocalDataSource implements BookmarkDataSource {
             return new ArrayList<>();
         }
 
-        List<String> codes = new ArrayList<>();
+        ArrayList<String> codes = new ArrayList<>();
         try {
             codes = gson.fromJson(json, new TypeToken<List<String>>(){}.getType());
         } catch (JsonSyntaxException e) {

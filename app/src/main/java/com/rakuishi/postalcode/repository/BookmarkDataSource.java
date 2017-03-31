@@ -1,10 +1,10 @@
 package com.rakuishi.postalcode.repository;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface BookmarkDataSource {
 
-    List<String> findAll();
+    ArrayList<String> findAll();
     boolean exists(String code);
     void add(String code) throws IllegalArgumentException, IllegalStateException;
     void remove(String code);
