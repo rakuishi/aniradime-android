@@ -24,10 +24,7 @@ import javax.inject.Inject;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import timber.log.Timber;
 
-import static com.rakuishi.postalcode.PostalCodeViewType.DETAIL;
-import static com.rakuishi.postalcode.PostalCodeViewType.PREFECTURE;
 import static com.rakuishi.postalcode.PostalCodeViewType.SEARCH;
 
 public class SearchFragment extends BaseFragment implements PostalCodeListAdapter.Callback,
@@ -77,7 +74,7 @@ public class SearchFragment extends BaseFragment implements PostalCodeListAdapte
 
     @Override
     public void onItemClick(PostalCode postalCode) {
-        startActivity(PostalCodeActivity.newInstance(getContext(), postalCode));
+        startActivity(PostalCodeActivity.newIntent(getContext(), postalCode));
     }
 
     // endregion

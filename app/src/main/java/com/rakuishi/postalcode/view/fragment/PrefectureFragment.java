@@ -82,7 +82,7 @@ public class PrefectureFragment extends BaseFragment implements PostalCodeListAd
 
     @Override
     public void onItemClick(PostalCode postalCode) {
-        startActivity(PostalCodeActivity.newInstance(getContext(), CITY, postalCode.prefectureId, postalCode.prefecture));
+        startActivity(PostalCodeActivity.newIntent(getContext(), CITY, postalCode.prefectureId, postalCode.prefecture));
     }
 
     // endregion

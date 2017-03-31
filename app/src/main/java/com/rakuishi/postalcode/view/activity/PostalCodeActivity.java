@@ -33,7 +33,7 @@ public class PostalCodeActivity extends BaseActivity {
     private ActivityPostalCodeBinding binding;
     private List<String> fragmentNames = new ArrayList<>();
 
-    public static Intent newInstance(Context context, PostalCodeViewType type, int id, String title) {
+    public static Intent newIntent(Context context, PostalCodeViewType type, int id, String title) {
         Intent intent = new Intent(context, PostalCodeActivity.class);
         intent.putExtra(TYPE, type);
         intent.putExtra(ID, id);
@@ -41,7 +41,7 @@ public class PostalCodeActivity extends BaseActivity {
         return intent;
     }
 
-    public static Intent newInstance(Context context, PostalCode postalCode) {
+    public static Intent newIntent(Context context, PostalCode postalCode) {
         Intent intent = new Intent(context, PostalCodeActivity.class);
         intent.putExtra(TYPE, DETAIL);
         intent.putExtra(CODE, postalCode.code);
