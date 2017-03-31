@@ -10,4 +10,10 @@
     <string name="pronunciation">読み</string>
 
     <string name="empty_search">郵便番号または地名から検索</string>
+    <string name="empty_bookmark">素早くアクセスするために、お気に入りアイテムに追加</string>
+    <string name="no_results">結果がありません</string>
+    <string name="long_press_to_copy">項目を長押しでコピーできます</string>
+    <string name="share">共有</string>
+    <string name="open_in_google_maps">Google Maps で開く</string>
+    <string name="copied_format">%1$s をコピーしました</string>
 </resources>
