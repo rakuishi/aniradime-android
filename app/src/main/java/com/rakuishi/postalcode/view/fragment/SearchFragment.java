@@ -96,6 +96,8 @@ public class SearchFragment extends BaseFragment implements PostalCodeListAdapte
             return;
         }
 
+        binding.progressBar.setVisibility(View.VISIBLE);
+
         Disposable disposable = postalCodeRepository.find(currentQuery)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe((postalCodes, throwable) -> {
@@ -104,7 +106,7 @@ public class SearchFragment extends BaseFragment implements PostalCodeListAdapte
                         binding.emptyView.setVisibility(postalCodes.size() > 0 ? View.GONE : View.VISIBLE);
                         binding.emptyView.setText(TextUtils.isEmpty(currentQuery) ? R.string.empty_search : R.string.no_results);
                     }
-                    // binding.progressBar.setVisibility(View.GONE);
+                    binding.progressBar.setVisibility(View.GONE);
                 });
         compositeDisposable.add(disposable);
     }
