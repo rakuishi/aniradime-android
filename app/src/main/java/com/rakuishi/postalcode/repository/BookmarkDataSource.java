@@ -7,7 +7,8 @@ import io.reactivex.Single;
 public interface BookmarkDataSource {
 
     List<String> findAll();
-    void add(String code);
+    boolean exists(String code);
+    void add(String code) throws IllegalArgumentException, IllegalStateException;
     void remove(String code);
     void clear();
 }

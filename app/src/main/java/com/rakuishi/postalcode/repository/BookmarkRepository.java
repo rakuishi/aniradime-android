@@ -21,7 +21,12 @@ public class BookmarkRepository implements BookmarkDataSource {
     }
 
     @Override
-    public void add(String code) {
+    public boolean exists(String code) {
+        return dataSource.exists(code);
+    }
+
+    @Override
+    public void add(String code) throws IllegalArgumentException, IllegalStateException {
         dataSource.add(code);
     }
 

@@ -3,6 +3,7 @@ package com.rakuishi.postalcode.repository;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
@@ -11,6 +12,8 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -33,8 +36,12 @@ public class BookmarkLocalDataSource implements BookmarkDataSource {
         editor.apply();
     }
 
+    public boolean exists(List<String> codes, String code) {
+        return codes.contains(code);
+    }
+
     @Override
-    public List<String> findAll() {
+    public @NonNull List<String> findAll() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String json = prefs.getString(BOOKMARK_CODES, "");
 
@@ -53,9 +60,25 @@ public class BookmarkLocalDataSource implements BookmarkDataSource {
     }
 
     @Override
-    public void add(String code) {
-        // FIXME: this method must consider SQLITE_LIMIT_VARIABLE_NUMBER = 999
+    public boolean exists(String code) {
+        return exists(findAll(), code);
+    }
+
+    @Override
+    public void add(String code) throws IllegalArgumentException, IllegalStateException {
+        final Matcher matcher = Pattern.compile("\\d{7}+").matcher(code);
+        if (!matcher.find()) {
+            throw new IllegalArgumentException("Code must fulfill a `\\d{7}+` pattern");
+        }
+
         List<String> codes = findAll();
+        if (exists(codes, code)) {
+            return;
+        }
+
+        if (codes.size() == 999) {
+            throw new IllegalStateException("Bookmark's limit is 999");
+        }
         codes.add(code);
         save(codes);
     }
