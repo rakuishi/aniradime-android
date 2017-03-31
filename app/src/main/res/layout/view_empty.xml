@@ -32,6 +32,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/image_view"
+                android:gravity="center"
+                android:paddingRight="@dimen/dp_40"
+                android:paddingLeft="@dimen/dp_40"
                 tools:text="郵便番号または地名から検索"
                 />
 
