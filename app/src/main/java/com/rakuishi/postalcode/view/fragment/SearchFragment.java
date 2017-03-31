@@ -15,6 +15,7 @@ import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.FragmentSearchBinding;
 import com.rakuishi.postalcode.model.PostalCode;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
+import com.rakuishi.postalcode.view.activity.PostalCodeActivity;
 import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
 import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
 
@@ -25,6 +26,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import timber.log.Timber;
 
+import static com.rakuishi.postalcode.PostalCodeViewType.DETAIL;
 import static com.rakuishi.postalcode.PostalCodeViewType.PREFECTURE;
 import static com.rakuishi.postalcode.PostalCodeViewType.SEARCH;
 
@@ -75,7 +77,7 @@ public class SearchFragment extends BaseFragment implements PostalCodeListAdapte
 
     @Override
     public void onItemClick(PostalCode postalCode) {
-
+        startActivity(PostalCodeActivity.newInstance(getContext(), postalCode));
     }
 
     // endregion

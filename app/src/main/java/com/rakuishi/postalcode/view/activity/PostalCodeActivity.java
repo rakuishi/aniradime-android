@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.ActivityPostalCodeBinding;
+import com.rakuishi.postalcode.model.PostalCode;
 import com.rakuishi.postalcode.view.fragment.PostalCodeDetailFragment;
 import com.rakuishi.postalcode.view.fragment.PostalCodeListFragment;
 import com.rakuishi.postalcode.PostalCodeViewType;
@@ -20,12 +21,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.rakuishi.postalcode.PostalCodeViewType.CITY;
+import static com.rakuishi.postalcode.PostalCodeViewType.DETAIL;
 import static com.rakuishi.postalcode.PostalCodeViewType.STREET;
 
 public class PostalCodeActivity extends BaseActivity {
 
     private final static String TYPE = "type";
     private final static String ID = "id";
+    private final static String CODE = "code";
     private final static String TITLE = "title";
     private ActivityPostalCodeBinding binding;
     private List<String> fragmentNames = new ArrayList<>();
@@ -38,6 +41,14 @@ public class PostalCodeActivity extends BaseActivity {
         return intent;
     }
 
+    public static Intent newInstance(Context context, PostalCode postalCode) {
+        Intent intent = new Intent(context, PostalCodeActivity.class);
+        intent.putExtra(TYPE, DETAIL);
+        intent.putExtra(CODE, postalCode.code);
+        intent.putExtra(TITLE, postalCode.getFullName());
+        return intent;
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +57,13 @@ public class PostalCodeActivity extends BaseActivity {
         setSupportActionBar(binding.view.toolbar);
 
         Intent intent = getIntent();
-        if (intent == null || !intent.hasExtra(TYPE) || !intent.hasExtra(ID)) {
+        if (intent == null || !intent.hasExtra(TYPE)) {
             throw new IllegalStateException("PostalCodeActivity requires type and id parameters.");
         }
 
         PostalCodeViewType type = (PostalCodeViewType) intent.getSerializableExtra(TYPE);
         int id = intent.getIntExtra(ID, 0);
+        String code = intent.hasExtra(CODE) ? intent.getStringExtra(CODE) : "";
         String title = intent.hasExtra(TITLE) ? intent.getStringExtra(TITLE) : "";
         Fragment fragment = null;
 
@@ -65,8 +77,7 @@ public class PostalCodeActivity extends BaseActivity {
                 replaceFragment(fragment, title);
                 break;
             case DETAIL:
-                // FIXME: Add a new method to make a new instance
-                fragment = PostalCodeDetailFragment.newInstance("");
+                fragment = PostalCodeDetailFragment.newInstance(code);
                 replaceFragment(fragment, title);
                 break;
         }
