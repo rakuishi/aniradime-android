@@ -37,7 +37,13 @@ public class BookmarkLocalDataSource implements BookmarkDataSource {
     }
 
     public boolean exists(List<String> codes, String code) {
-        return codes.contains(code);
+        for (String comparedCode: codes) {
+            if (TextUtils.equals(comparedCode, code)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override
