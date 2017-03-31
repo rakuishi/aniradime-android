@@ -14,4 +14,8 @@
     <string name="empty_search">Search postal code or address</string>
     <string name="empty_bookmark">Add your favorite items here</string>
     <string name="no_results">No results</string>
+    <string name="long_press_to_copy">Long press to copy</string>
+    <string name="share">Share</string>
+    <string name="open_in_google_maps">Open in Google Maps</string>
+    <string name="copied_format">Copied %1$s</string>
 </resources>

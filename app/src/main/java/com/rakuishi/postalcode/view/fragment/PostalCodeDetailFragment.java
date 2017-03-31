@@ -1,7 +1,11 @@
 package com.rakuishi.postalcode.view.fragment;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.rakuishi.postalcode.R;
@@ -24,7 +29,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-public class PostalCodeDetailFragment extends BaseFragment implements FloatingActionButton.OnClickListener {
+public class PostalCodeDetailFragment extends BaseFragment implements
+        FloatingActionButton.OnClickListener, PostalCodeDetailAdapter.Callback {
 
     private final static String CODE = "code";
     private FragmentPostalCodeDetailBinding binding;
@@ -63,7 +69,7 @@ public class PostalCodeDetailFragment extends BaseFragment implements FloatingAc
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_postal_code_detail, container, false);
 
-        adapter = new PostalCodeDetailAdapter(getContext());
+        adapter = new PostalCodeDetailAdapter(getContext(), this);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(getResources()));
         binding.recyclerView.setAdapter(adapter);
@@ -115,4 +121,33 @@ public class PostalCodeDetailFragment extends BaseFragment implements FloatingAc
     }
 
     // engregion
+
+    // region PostalCodeDetailAdapter.Callback
+
+    @Override
+    public void onLongClickText(String text) {
+        ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("", text);
+        clipboard.setPrimaryClip(clip);
+        Toast.makeText(getContext(), getString(R.string.copied_format, text), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onClickShare(String q) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, q);
+        intent.setType("text/plain");
+        startActivity(intent);
+    }
+
+    @Override
+    public void onClickOpenInGoogleMaps(String q) {
+        Uri uri = Uri.parse("geo:0,0?q=" + Uri.encode(q));
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+    }
+
+    // endregion
 }
