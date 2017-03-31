@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,11 @@ public class SearchFragment extends BaseFragment implements PostalCodeListAdapte
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(getResources()));
         binding.recyclerView.setAdapter(adapter);
+
         binding.searchView.setOnSearchListener(this);
+
+        binding.emptyView.setDrawable(R.drawable.ic_search_white_24dp);
+        binding.emptyView.setText(R.string.empty_search);
 
         return binding.getRoot();
     }
@@ -84,11 +89,20 @@ public class SearchFragment extends BaseFragment implements PostalCodeListAdapte
 
     @Override
     public void onSearchAction(String currentQuery) {
+        if (TextUtils.isEmpty(currentQuery)) {
+            adapter.clear();
+            binding.emptyView.setVisibility(View.VISIBLE);
+            binding.emptyView.setText(R.string.empty_search);
+            return;
+        }
+
         Disposable disposable = postalCodeRepository.find(currentQuery)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe((postalCodes, throwable) -> {
                     if (throwable == null) {
                         adapter.addAll(postalCodes);
+                        binding.emptyView.setVisibility(postalCodes.size() > 0 ? View.GONE : View.VISIBLE);
+                        binding.emptyView.setText(TextUtils.isEmpty(currentQuery) ? R.string.empty_search : R.string.no_results);
                     }
                     // binding.progressBar.setVisibility(View.GONE);
                 });

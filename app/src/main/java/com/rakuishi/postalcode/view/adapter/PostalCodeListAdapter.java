@@ -76,6 +76,11 @@ public class PostalCodeListAdapter extends RecyclerView.Adapter<PostalCodeListAd
         notifyDataSetChanged();
     }
 
+    public void clear() {
+        postalCodes.clear();
+        notifyDataSetChanged();
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView primaryTextView;

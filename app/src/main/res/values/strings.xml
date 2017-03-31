@@ -10,4 +10,8 @@
     <string name="postal_code">Postal Code</string>
     <string name="address">Address</string>
     <string name="pronunciation">Pronunciation</string>
+
+    <string name="empty_search">Search postal code or address</string>
+    <string name="empty_bookmark">Add your favorite items here</string>
+    <string name="no_results">No results</string>
 </resources>

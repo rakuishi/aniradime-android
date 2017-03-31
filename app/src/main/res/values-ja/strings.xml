@@ -8,4 +8,6 @@
     <string name="postal_code">郵便番号</string>
     <string name="address">住所</string>
     <string name="pronunciation">読み</string>
+
+    <string name="empty_search">郵便番号または地名から検索</string>
 </resources>
