@@ -14,6 +14,7 @@
             android:layout_height="match_parent"
             android:paddingTop="@dimen/dp_64"
             android:clipToPadding="false"
+            android:scrollbars="vertical"
             />
 
         <RelativeLayout
