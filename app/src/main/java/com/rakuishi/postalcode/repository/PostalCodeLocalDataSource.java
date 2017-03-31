@@ -139,4 +139,14 @@ public class PostalCodeLocalDataSource implements PostalCodeDataSource {
 
         return Single.just(postalCodes);
     }
+
+    @Override
+    public Single<PostalCode> findByCode(String code) {
+        return postalCodes().selector().codeEq(code).executeAsObservable().firstOrError();
+    }
+
+    @Override
+    public Single<List<PostalCode>> findByCodes(ArrayList<String> codes) {
+        return postalCodes().selector().codeIn(codes).executeAsObservable().toList();
+    }
 }

@@ -11,6 +11,8 @@ import com.rakuishi.postalcode.util.UnzipDbUtil;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
@@ -86,6 +88,31 @@ public class PostalCodeRepositoryTest {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((postalCodes, throwable) -> {
                     assertEquals(postalCodes.size(), 1);
+                });
+    }
+
+    @Test
+    public void findByCode() throws Exception {
+        repository.findByCode("8000000")
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((postalCode, throwable) -> {
+                    assertEquals(postalCode.getFullName(), "福岡県北九州市門司区");
+                });
+    }
+
+    @Test
+    public void findByCodes() throws Exception {
+        ArrayList<String> codes = new ArrayList<>();
+        codes.add("8000000");
+        codes.add("8000045");
+        codes.add("8000101");
+
+        repository.findByCodes(codes)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((postalCodes, throwable) -> {
+                    assertEquals(postalCodes.get(0).getFullName(), "福岡県北九州市門司区");
+                    assertEquals(postalCodes.get(1).getFullName(), "福岡県北九州市門司区青葉台");
+                    assertEquals(postalCodes.get(2).getFullName(), "福岡県北九州市門司区伊川");
                 });
     }
 }

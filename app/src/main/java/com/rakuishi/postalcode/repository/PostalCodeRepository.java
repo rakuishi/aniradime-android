@@ -2,6 +2,7 @@ package com.rakuishi.postalcode.repository;
 
 import com.rakuishi.postalcode.model.PostalCode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -42,5 +43,15 @@ public class PostalCodeRepository implements PostalCodeDataSource {
     @Override
     public Single<List<PostalCode>> find(String query) {
         return dataSource.find(query);
+    }
+
+    @Override
+    public Single<PostalCode> findByCode(String code) {
+        return dataSource.findByCode(code);
+    }
+
+    @Override
+    public Single<List<PostalCode>> findByCodes(ArrayList<String> codes) {
+        return dataSource.findByCodes(codes);
     }
 }
