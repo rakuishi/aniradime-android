@@ -16,6 +16,7 @@ import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.FragmentToolbarRecyclerViewBinding;
 import com.rakuishi.postalcode.model.PostalCode;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
+import com.rakuishi.postalcode.view.activity.InfoActivity;
 import com.rakuishi.postalcode.view.activity.PostalCodeActivity;
 import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
 import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
@@ -96,11 +97,10 @@ public class PrefectureFragment extends BaseFragment implements
 
     // endregion
 
-
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         if (item.getItemId() == R.id.action_info) {
-            Timber.d("onMenuItemClick: " + item.getItemId());
+            startActivity(InfoActivity.newIntent(getContext()));
             return true;
         }
 

@@ -16,4 +16,11 @@
     <string name="share">共有</string>
     <string name="open_in_google_maps">Google Maps で開く</string>
     <string name="copied_format">%1$s をコピーしました</string>
+
+    <string name="version">バージョン</string>
+    <string name="last_update_of_postal_code_data">郵便番号データ</string>
+    <string name="developed_by">開発</string>
+    <string name="developer">rakuishi</string>
+    <string name="developer_homepage">http://rakuishi.com</string>
+    <string name="license">3rd Party Licenses</string>
 </resources>

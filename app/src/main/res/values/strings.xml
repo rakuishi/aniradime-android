@@ -1,7 +1,12 @@
 <resources>
-    <string name="app_name">PostalCode</string>
+    <!-- Config -->
     <string name="zipped_database_name">x-ken-all-201702.db.zip</string>
     <string name="database_name">x-ken-all-201702.db</string>
+    <string name="database_date">2017/02/28</string>
+    <string name="developer_homepage">http://rakuishi.com</string>
+    <string name="licenses_path">file:///android_asset/licenses.html</string>
+
+    <string name="app_name">PostalCode</string>
 
     <string name="search">Search</string>
     <string name="bookmark">Bookmark</string>
@@ -18,4 +23,10 @@
     <string name="share">Share</string>
     <string name="open_in_google_maps">Open in Google Maps</string>
     <string name="copied_format">Copied %1$s</string>
+
+    <string name="version">Version</string>
+    <string name="last_update_of_postal_code_data">Last update of postal code data</string>
+    <string name="developed_by">Developed by</string>
+    <string name="developer">rakuishi</string>
+    <string name="license">3rd Party Licenses</string>
 </resources>
