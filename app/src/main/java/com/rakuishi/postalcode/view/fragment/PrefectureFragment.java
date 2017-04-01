@@ -4,7 +4,11 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -21,11 +25,13 @@ import javax.inject.Inject;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import timber.log.Timber;
 
 import static com.rakuishi.postalcode.PostalCodeViewType.CITY;
 import static com.rakuishi.postalcode.PostalCodeViewType.PREFECTURE;
 
-public class PrefectureFragment extends BaseFragment implements PostalCodeListAdapter.Callback {
+public class PrefectureFragment extends BaseFragment implements
+        PostalCodeListAdapter.Callback, Toolbar.OnMenuItemClickListener {
 
     private FragmentToolbarRecyclerViewBinding binding;
     private PostalCodeListAdapter adapter;
@@ -52,7 +58,10 @@ public class PrefectureFragment extends BaseFragment implements PostalCodeListAd
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(getResources()));
         binding.recyclerView.setAdapter(adapter);
+
         binding.view.toolbar.setTitle(R.string.prefecture);
+        binding.view.toolbar.inflateMenu(R.menu.menu_main);
+        binding.view.toolbar.setOnMenuItemClickListener(this);
 
         return binding.getRoot();
     }
@@ -86,4 +95,15 @@ public class PrefectureFragment extends BaseFragment implements PostalCodeListAd
     }
 
     // endregion
+
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        if (item.getItemId() == R.id.action_info) {
+            Timber.d("onMenuItemClick: " + item.getItemId());
+            return true;
+        }
+
+        return false;
+    }
 }
