@@ -23,6 +23,7 @@
     <string name="share">Share</string>
     <string name="open_in_google_maps">Open in Google Maps</string>
     <string name="copied_format">Copied %1$s</string>
+    <string name="search_hint">1600000, 新宿区</string>
 
     <string name="version">Version</string>
     <string name="last_update_of_postal_code_data">Last update of postal code data</string>

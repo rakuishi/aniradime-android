@@ -16,6 +16,7 @@
     <string name="share">共有</string>
     <string name="open_in_google_maps">Google Maps で開く</string>
     <string name="copied_format">%1$s をコピーしました</string>
+    <string name="search_hint">1600000, 新宿区</string>
 
     <string name="version">バージョン</string>
     <string name="last_update_of_postal_code_data">郵便番号データ</string>

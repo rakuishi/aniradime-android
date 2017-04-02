@@ -47,6 +47,7 @@
             app:floatingSearch_searchBarMarginLeft="@dimen/dp_4"
             app:floatingSearch_searchBarMarginTop="@dimen/dp_4"
             app:floatingSearch_searchBarMarginRight="@dimen/dp_4"
+            app:floatingSearch_searchHint="@string/search_hint"
             />
 
     </RelativeLayout>
