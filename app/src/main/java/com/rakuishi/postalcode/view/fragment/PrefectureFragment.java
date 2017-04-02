@@ -20,6 +20,7 @@ import com.rakuishi.postalcode.view.activity.InfoActivity;
 import com.rakuishi.postalcode.view.activity.PostalCodeActivity;
 import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
 import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
+import com.rakuishi.postalcode.view.helper.NendHelper;
 
 import javax.inject.Inject;
 
@@ -59,6 +60,7 @@ public class PrefectureFragment extends BaseFragment implements
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(getResources()));
         binding.recyclerView.setAdapter(adapter);
+        NendHelper.setPadding(getContext(), binding.recyclerView);
 
         binding.view.toolbar.setTitle(R.string.prefecture);
         binding.view.toolbar.inflateMenu(R.menu.menu_main);

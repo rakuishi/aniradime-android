@@ -18,6 +18,7 @@ import com.rakuishi.postalcode.repository.PostalCodeRepository;
 import com.rakuishi.postalcode.view.activity.PostalCodeActivity;
 import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
 import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
+import com.rakuishi.postalcode.view.helper.NendHelper;
 
 import javax.inject.Inject;
 
@@ -55,11 +56,13 @@ public class SearchFragment extends BaseFragment implements PostalCodeListAdapte
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(getResources()));
         binding.recyclerView.setAdapter(adapter);
+        NendHelper.setPadding(getContext(), binding.recyclerView);
 
         binding.searchView.setOnSearchListener(this);
 
         binding.emptyView.setDrawable(R.drawable.ic_search_white_24dp);
         binding.emptyView.setText(R.string.empty_search);
+        NendHelper.setPadding(getContext(), binding.emptyView);
 
         return binding.getRoot();
     }

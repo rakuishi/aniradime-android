@@ -22,6 +22,7 @@ import com.rakuishi.postalcode.repository.BookmarkRepository;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
 import com.rakuishi.postalcode.view.adapter.PostalCodeDetailAdapter;
 import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
+import com.rakuishi.postalcode.view.helper.NendHelper;
 
 import javax.inject.Inject;
 
@@ -73,9 +74,11 @@ public class PostalCodeDetailFragment extends BaseFragment implements
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(getResources()));
         binding.recyclerView.setAdapter(adapter);
+        NendHelper.setPadding(getContext(), binding.recyclerView);
 
         binding.fab.setOnClickListener(this);
         binding.fab.setEnabled(false);
+        NendHelper.setMargin(getContext(), binding.fab);
 
         return binding.getRoot();
     }
