@@ -14,7 +14,7 @@ import com.rakuishi.postalcode.R;
 public class InfoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface Callback {
-        void onClickUri(String uri);
+        void onClickUrl(String url);
     }
 
     private final @NonNull Context context;
@@ -51,14 +51,14 @@ public class InfoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 holder1.secondaryTextView.setText(R.string.developed_by);
                 holder1.secondaryTextView.setVisibility(View.VISIBLE);
                 holder1.itemView.setOnClickListener(v -> {
-                    callback.onClickUri(context.getString(R.string.developer_homepage));
+                    callback.onClickUrl(context.getString(R.string.developer_homepage));
                 });
                 break;
             case 3:
                 holder1.primaryTextView.setText(R.string.license);
                 holder1.secondaryTextView.setVisibility(View.GONE);
                 holder1.itemView.setOnClickListener(v -> {
-                    callback.onClickUri(context.getString(R.string.licenses_path));
+                    callback.onClickUrl(context.getString(R.string.licenses_path));
                 });
                 break;
         }
