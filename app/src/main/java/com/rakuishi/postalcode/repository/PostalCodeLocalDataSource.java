@@ -79,6 +79,7 @@ public class PostalCodeLocalDataSource implements PostalCodeDataSource {
 
         // 福岡県福岡市 → 福岡県 福岡市
         String[] queries = query
+                .replace("-", "")
                 .replace("都", "都 ")
                 .replace("道", "道 ")
                 .replace("府", "府 ")
