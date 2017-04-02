@@ -28,6 +28,13 @@ android {
     }
 }
 
+repositories {
+    maven {
+        // nendSDK
+        url 'http://fan-adn.github.io/nendSDK-Android-lib/library'
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -51,4 +58,5 @@ dependencies {
     compile('com.github.arimorty:floatingsearchview:2.0.3', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'net.nend.android:nend-sdk:3.3.0'
 }

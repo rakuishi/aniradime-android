@@ -5,6 +5,8 @@
     <string name="database_date">2017/02/28</string>
     <string name="developer_homepage">http://rakuishi.com</string>
     <string name="licenses_path">file:///android_asset/licenses.html</string>
+    <string name="nend_api_key">3f61448fc8d7e34d90cc8497696875a00e8331a8</string>
+    <string name="nend_spot_id">79102</string>
 
     <string name="app_name">PostalCode</string>
 
