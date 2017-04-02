@@ -31,11 +31,6 @@ public class App extends Application {
             Timber.plant(new DebugTree());
         }
 
-        appComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(this))
-                .build();
-        appComponent.inject(this);
-
         try {
             UnzipDbUtil.unzipIfNecessary(
                     this,
@@ -46,5 +41,10 @@ public class App extends Application {
             // TODO: Show alert message
             Timber.e(e);
         }
+
+        appComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
+                .build();
+        appComponent.inject(this);
     }
 }
