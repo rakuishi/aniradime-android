@@ -22,6 +22,5 @@
     <string name="last_update_of_postal_code_data">郵便番号データ</string>
     <string name="developed_by">開発</string>
     <string name="developer">rakuishi</string>
-    <string name="developer_homepage">http://rakuishi.com</string>
     <string name="license">3rd Party Licenses</string>
 </resources>
