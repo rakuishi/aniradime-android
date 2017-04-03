@@ -39,6 +39,10 @@ public class UnzipDbUtil {
         ZipEntry zipEntry = zipInputStream.getNextEntry();
         File toPath = context.getDatabasePath(toName);
 
+        if (!toPath.getParentFile().exists()) {
+            toPath.getParentFile().mkdir();
+        }
+
         if (zipEntry != null) {
             FileOutputStream fileOutputStream = new FileOutputStream(toPath, false);
             byte[] buffer = new byte[1024];
@@ -50,6 +54,7 @@ public class UnzipDbUtil {
             fileOutputStream.close();
             zipInputStream.closeEntry();;
         }
+
         zipInputStream.close();
 
         Timber.d("Database is unzipped from assets.");
