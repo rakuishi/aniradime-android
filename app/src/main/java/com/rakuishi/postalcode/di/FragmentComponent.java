@@ -1,10 +1,10 @@
 package com.rakuishi.postalcode.di;
 
-import com.rakuishi.postalcode.view.fragment.BookmarkFragment;
-import com.rakuishi.postalcode.view.fragment.PostalCodeDetailFragment;
-import com.rakuishi.postalcode.view.fragment.PostalCodeListFragment;
-import com.rakuishi.postalcode.view.fragment.PrefectureFragment;
-import com.rakuishi.postalcode.view.fragment.SearchFragment;
+import com.rakuishi.postalcode.fragment.BookmarkFragment;
+import com.rakuishi.postalcode.fragment.PostalCodeDetailFragment;
+import com.rakuishi.postalcode.fragment.PostalCodeListFragment;
+import com.rakuishi.postalcode.fragment.PrefectureFragment;
+import com.rakuishi.postalcode.fragment.SearchFragment;
 
 import dagger.Subcomponent;
 

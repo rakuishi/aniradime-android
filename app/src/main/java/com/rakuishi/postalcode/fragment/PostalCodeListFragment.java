@@ -1,4 +1,4 @@
-package com.rakuishi.postalcode.view.fragment;
+package com.rakuishi.postalcode.fragment;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -10,15 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rakuishi.postalcode.PostalCodeViewType;
+import com.rakuishi.postalcode.constant.PostalCodeViewType;
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.FragmentRecyclerViewBinding;
 import com.rakuishi.postalcode.model.PostalCode;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
-import com.rakuishi.postalcode.view.activity.PostalCodeActivity;
-import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
-import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
-import com.rakuishi.postalcode.view.helper.NendHelper;
+import com.rakuishi.postalcode.activity.PostalCodeActivity;
+import com.rakuishi.postalcode.adapter.PostalCodeListAdapter;
+import com.rakuishi.postalcode.view.DividerItemDecoration;
+import com.rakuishi.postalcode.view.NendHelper;
 
 import java.util.List;
 
@@ -30,8 +30,8 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import timber.log.Timber;
 
-import static com.rakuishi.postalcode.PostalCodeViewType.CITY;
-import static com.rakuishi.postalcode.PostalCodeViewType.STREET;
+import static com.rakuishi.postalcode.constant.PostalCodeViewType.CITY;
+import static com.rakuishi.postalcode.constant.PostalCodeViewType.STREET;
 
 public class PostalCodeListFragment extends BaseFragment implements PostalCodeListAdapter.Callback {
 

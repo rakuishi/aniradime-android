@@ -1,21 +1,17 @@
-package com.rakuishi.postalcode.view.activity;
+package com.rakuishi.postalcode.activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.customtabs.CustomTabsIntent;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.ActivityInfoBinding;
-import com.rakuishi.postalcode.view.adapter.InfoAdapter;
-import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
-import com.rakuishi.postalcode.view.helper.WebViewSwitcher;
-
-import timber.log.Timber;
+import com.rakuishi.postalcode.adapter.InfoAdapter;
+import com.rakuishi.postalcode.view.DividerItemDecoration;
+import com.rakuishi.postalcode.util.WebViewSwitcher;
 
 public class InfoActivity extends BaseActivity implements InfoAdapter.Callback {
 

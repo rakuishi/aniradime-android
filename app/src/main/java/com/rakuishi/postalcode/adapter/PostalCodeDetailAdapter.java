@@ -1,4 +1,4 @@
-package com.rakuishi.postalcode.view.adapter;
+package com.rakuishi.postalcode.adapter;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

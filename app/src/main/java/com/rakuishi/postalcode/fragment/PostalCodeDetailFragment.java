@@ -1,4 +1,4 @@
-package com.rakuishi.postalcode.view.fragment;
+package com.rakuishi.postalcode.fragment;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -20,9 +20,9 @@ import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.FragmentPostalCodeDetailBinding;
 import com.rakuishi.postalcode.repository.BookmarkRepository;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
-import com.rakuishi.postalcode.view.adapter.PostalCodeDetailAdapter;
-import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
-import com.rakuishi.postalcode.view.helper.NendHelper;
+import com.rakuishi.postalcode.adapter.PostalCodeDetailAdapter;
+import com.rakuishi.postalcode.view.DividerItemDecoration;
+import com.rakuishi.postalcode.view.NendHelper;
 
 import javax.inject.Inject;
 

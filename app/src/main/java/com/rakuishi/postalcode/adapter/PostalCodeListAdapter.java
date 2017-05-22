@@ -1,4 +1,4 @@
-package com.rakuishi.postalcode.view.adapter;
+package com.rakuishi.postalcode.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.rakuishi.postalcode.PostalCodeViewType;
+import com.rakuishi.postalcode.constant.PostalCodeViewType;
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.model.PostalCode;
 

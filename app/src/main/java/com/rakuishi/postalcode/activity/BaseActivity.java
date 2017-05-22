@@ -1,4 +1,4 @@
-package com.rakuishi.postalcode.view.activity;
+package com.rakuishi.postalcode.activity;
 
 import android.support.v7.app.AppCompatActivity;
 

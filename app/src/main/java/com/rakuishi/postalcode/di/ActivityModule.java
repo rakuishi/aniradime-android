@@ -1,6 +1,6 @@
 package com.rakuishi.postalcode.di;
 
-import com.rakuishi.postalcode.view.activity.BaseActivity;
+import com.rakuishi.postalcode.activity.BaseActivity;
 
 import dagger.Module;
 import dagger.Provides;

@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -22,15 +22,15 @@
         </activity>
 
         <activity
-            android:name=".view.activity.PostalCodeActivity"
+            android:name=".activity.PostalCodeActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".view.activity.InfoActivity"
+            android:name=".activity.InfoActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".view.activity.WebViewActivity"
+            android:name=".activity.WebViewActivity"
             android:screenOrientation="portrait" />
 
     </application>

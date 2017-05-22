@@ -1,6 +1,6 @@
 package com.rakuishi.postalcode.di;
 
-import com.rakuishi.postalcode.view.fragment.BaseFragment;
+import com.rakuishi.postalcode.fragment.BaseFragment;
 
 import dagger.Module;
 import dagger.Provides;

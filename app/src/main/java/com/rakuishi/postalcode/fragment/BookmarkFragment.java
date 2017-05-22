@@ -1,10 +1,9 @@
-package com.rakuishi.postalcode.view.fragment;
+package com.rakuishi.postalcode.fragment;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +13,10 @@ import com.rakuishi.postalcode.databinding.FragmentToolbarRecyclerViewEmptyViewB
 import com.rakuishi.postalcode.model.PostalCode;
 import com.rakuishi.postalcode.repository.BookmarkRepository;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
-import com.rakuishi.postalcode.view.activity.PostalCodeActivity;
-import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
-import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
-import com.rakuishi.postalcode.view.helper.NendHelper;
+import com.rakuishi.postalcode.activity.PostalCodeActivity;
+import com.rakuishi.postalcode.adapter.PostalCodeListAdapter;
+import com.rakuishi.postalcode.view.DividerItemDecoration;
+import com.rakuishi.postalcode.view.NendHelper;
 
 import javax.inject.Inject;
 
@@ -25,7 +24,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-import static com.rakuishi.postalcode.PostalCodeViewType.BOOKMARK;
+import static com.rakuishi.postalcode.constant.PostalCodeViewType.BOOKMARK;
 
 public class BookmarkFragment extends BaseFragment implements PostalCodeListAdapter.Callback {
 

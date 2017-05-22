@@ -1,4 +1,4 @@
-package com.rakuishi.postalcode.view.activity;
+package com.rakuishi.postalcode.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.ActivityMainBinding;
-import com.rakuishi.postalcode.view.fragment.BookmarkFragment;
-import com.rakuishi.postalcode.view.fragment.PrefectureFragment;
-import com.rakuishi.postalcode.view.fragment.SearchFragment;
+import com.rakuishi.postalcode.fragment.BookmarkFragment;
+import com.rakuishi.postalcode.fragment.PrefectureFragment;
+import com.rakuishi.postalcode.fragment.SearchFragment;
 
 public class MainActivity extends BaseActivity {
 

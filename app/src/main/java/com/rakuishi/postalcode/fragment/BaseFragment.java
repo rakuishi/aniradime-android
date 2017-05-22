@@ -1,4 +1,4 @@
-package com.rakuishi.postalcode.view.fragment;
+package com.rakuishi.postalcode.fragment;
 
 import android.support.v4.app.Fragment;
 

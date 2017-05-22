@@ -1,4 +1,4 @@
-package com.rakuishi.postalcode.view.fragment;
+package com.rakuishi.postalcode.fragment;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -6,8 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,21 +14,20 @@ import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.FragmentToolbarRecyclerViewBinding;
 import com.rakuishi.postalcode.model.PostalCode;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
-import com.rakuishi.postalcode.view.activity.InfoActivity;
-import com.rakuishi.postalcode.view.activity.PostalCodeActivity;
-import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
-import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
-import com.rakuishi.postalcode.view.helper.NendHelper;
+import com.rakuishi.postalcode.activity.InfoActivity;
+import com.rakuishi.postalcode.activity.PostalCodeActivity;
+import com.rakuishi.postalcode.adapter.PostalCodeListAdapter;
+import com.rakuishi.postalcode.view.DividerItemDecoration;
+import com.rakuishi.postalcode.view.NendHelper;
 
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import timber.log.Timber;
 
-import static com.rakuishi.postalcode.PostalCodeViewType.CITY;
-import static com.rakuishi.postalcode.PostalCodeViewType.PREFECTURE;
+import static com.rakuishi.postalcode.constant.PostalCodeViewType.CITY;
+import static com.rakuishi.postalcode.constant.PostalCodeViewType.PREFECTURE;
 
 public class PrefectureFragment extends BaseFragment implements
         PostalCodeListAdapter.Callback, Toolbar.OnMenuItemClickListener {

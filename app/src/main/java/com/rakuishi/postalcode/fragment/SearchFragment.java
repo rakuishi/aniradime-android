@@ -1,4 +1,4 @@
-package com.rakuishi.postalcode.view.fragment;
+package com.rakuishi.postalcode.fragment;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -15,10 +15,10 @@ import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.FragmentSearchBinding;
 import com.rakuishi.postalcode.model.PostalCode;
 import com.rakuishi.postalcode.repository.PostalCodeRepository;
-import com.rakuishi.postalcode.view.activity.PostalCodeActivity;
-import com.rakuishi.postalcode.view.adapter.PostalCodeListAdapter;
-import com.rakuishi.postalcode.view.helper.DividerItemDecoration;
-import com.rakuishi.postalcode.view.helper.NendHelper;
+import com.rakuishi.postalcode.activity.PostalCodeActivity;
+import com.rakuishi.postalcode.adapter.PostalCodeListAdapter;
+import com.rakuishi.postalcode.view.DividerItemDecoration;
+import com.rakuishi.postalcode.view.NendHelper;
 
 import javax.inject.Inject;
 
@@ -26,7 +26,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-import static com.rakuishi.postalcode.PostalCodeViewType.SEARCH;
+import static com.rakuishi.postalcode.constant.PostalCodeViewType.SEARCH;
 
 public class SearchFragment extends BaseFragment implements PostalCodeListAdapter.Callback,
         FloatingSearchView.OnSearchListener {

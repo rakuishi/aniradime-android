@@ -1,4 +1,4 @@
-package com.rakuishi.postalcode.view.activity;
+package com.rakuishi.postalcode.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,16 +13,16 @@ import android.support.v4.app.FragmentTransaction;
 import com.rakuishi.postalcode.R;
 import com.rakuishi.postalcode.databinding.ActivityPostalCodeBinding;
 import com.rakuishi.postalcode.model.PostalCode;
-import com.rakuishi.postalcode.view.fragment.PostalCodeDetailFragment;
-import com.rakuishi.postalcode.view.fragment.PostalCodeListFragment;
-import com.rakuishi.postalcode.PostalCodeViewType;
+import com.rakuishi.postalcode.fragment.PostalCodeDetailFragment;
+import com.rakuishi.postalcode.fragment.PostalCodeListFragment;
+import com.rakuishi.postalcode.constant.PostalCodeViewType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rakuishi.postalcode.PostalCodeViewType.CITY;
-import static com.rakuishi.postalcode.PostalCodeViewType.DETAIL;
-import static com.rakuishi.postalcode.PostalCodeViewType.STREET;
+import static com.rakuishi.postalcode.constant.PostalCodeViewType.CITY;
+import static com.rakuishi.postalcode.constant.PostalCodeViewType.DETAIL;
+import static com.rakuishi.postalcode.constant.PostalCodeViewType.STREET;
 
 public class PostalCodeActivity extends BaseActivity {
 

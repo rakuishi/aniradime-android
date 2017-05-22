@@ -1,4 +1,4 @@
-package com.rakuishi.postalcode.view.helper;
+package com.rakuishi.postalcode.view;
 
 import android.content.Context;
 import android.graphics.Point;

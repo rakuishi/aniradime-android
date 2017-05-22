@@ -1,4 +1,4 @@
-package com.rakuishi.postalcode.view.customview;
+package com.rakuishi.postalcode.view;
 
 import android.annotation.TargetApi;
 import android.content.Context;

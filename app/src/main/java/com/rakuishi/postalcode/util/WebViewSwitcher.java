@@ -1,11 +1,11 @@
-package com.rakuishi.postalcode.view.helper;
+package com.rakuishi.postalcode.util;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.customtabs.CustomTabsIntent;
 
-import com.rakuishi.postalcode.view.activity.WebViewActivity;
+import com.rakuishi.postalcode.activity.WebViewActivity;
 
 public class WebViewSwitcher {
 
