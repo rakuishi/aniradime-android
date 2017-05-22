@@ -90,21 +90,7 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Single<List<PostalCode>> single;
-        switch (type) {
-            case PREFECTURE:
-                single = postalCodeRepository.findPrefectures();
-                break;
-            case CITY:
-                single = postalCodeRepository.findByPrefectureId(id);
-                break;
-            case STREET:
-            default:
-                single = postalCodeRepository.findByCityId(id);
-                break;
-        }
-
-        Disposable disposable = single
+        Disposable disposable = findPostalCodes()
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe((postalCodes, throwable) -> {
                     if (throwable == null) {
@@ -148,4 +134,16 @@ public class PostalCodeListFragment extends BaseFragment implements PostalCodeLi
     }
 
     // endregion
+
+    private Single<List<PostalCode>> findPostalCodes() {
+        switch (type) {
+            case PREFECTURE:
+                return postalCodeRepository.findPrefectures();
+            case CITY:
+                return postalCodeRepository.findByPrefectureId(id);
+            case STREET:
+            default:
+                return postalCodeRepository.findByCityId(id);
+        }
+    }
 }
