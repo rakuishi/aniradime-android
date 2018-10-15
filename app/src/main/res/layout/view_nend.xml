@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<net.nend.android.NendAdView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<net.nend.android.NendAdView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:nendsdk="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nend"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    NendApiKey="@string/nend_api_key"
-    NendSpotId="@string/nend_spot_id"
-    NendAdjustSize="true"
-    />
+    nendsdk:NendAdjustSize="true"
+    nendsdk:NendApiKey="@string/nend_api_key"
+    nendsdk:NendSpotId="@string/nend_spot_id" />
