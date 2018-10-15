@@ -1,8 +1,8 @@
 <resources>
     <!-- Config -->
-    <string name="zipped_database_name" translatable="false">x-ken-all-201704.db.zip</string>
-    <string name="database_name" translatable="false">x-ken-all-201704.db</string>
-    <string name="database_date" translatable="false">2017/04/28</string>
+    <string name="zipped_database_name" translatable="false">x-ken-all-201809.db.zip</string>
+    <string name="database_name" translatable="false">x-ken-all-201809.db</string>
+    <string name="database_date" translatable="false">2018/09/28</string>
     <string name="developer_homepage" translatable="false">http://rakuishi.com</string>
     <string name="licenses_path" translatable="false">file:///android_asset/licenses.html</string>
     <string name="privacy_policy_page" translatable="false">https://rakuishi.github.io/privacy-policy/postalcode.html</string>
